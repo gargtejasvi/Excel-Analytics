@@ -7,32 +7,33 @@ import {
 } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
+import Dashboard from "./components/Dashboard";
 import "./App.css";
 import FileUpload from "./components/FileUpload";
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token");
+  // const isAuthenticated = true; //!!localStorage.getItem("token");
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route
             path="/"
-            element={
-              <Navigate to={isAuthenticated ? "/dashboard" : "/login"} /> //dashboard or homepage
-            }
+            element={<Navigate to="/dashboard" />} // Always redirect to dashboard
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+
           <Route
-            path="/dashboard"
-            element={
-              isAuthenticated ? <h1>Dashboard</h1> : <Navigate to="/login" />
-            }
+            path="/file-upload"
+            element={<FileUpload />}
+            // element={
+            //   isAuthenticated ? <FileUpload /> : <Navigate to="/dashboard" />
+            // }
           />
         </Routes>
       </Router>
-      {/* <FileUpload /> */}
     </div>
   );
 }
