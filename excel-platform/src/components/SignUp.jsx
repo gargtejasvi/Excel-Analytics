@@ -94,7 +94,7 @@ const SignUp = () => {
       const data = await res.json();
       if (data.token) {
         localStorage.setItem("token", data.token);
-        navigate("/dashboard"); //Dashboard or homepage url
+        navigate("/file-upload"); // Redirect to file upload page after signup
       } else {
         alert("Signup failed");
       }
